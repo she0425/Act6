@@ -14,7 +14,7 @@ export default function DashboardTab() {
           <Text style={styles.text}>Saving preferences...</Text>
         ) : (
           <Text style={styles.text}>
-            Current Theme Mode: {darkMode ? "Dark Mode 🌙" : "Light Mode ☀️"}
+            Current Theme Mode: {darkMode ? "Dark Mode" : "Light Mode"}
           </Text>
         )}
       </View>
