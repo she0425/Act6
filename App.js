@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { PreferenceProvider } from './PreferenceContext';
+import DashboardTab from './DashboardTab';
+import PreferencesTab from './PreferencesTab';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PreferenceProvider>
+      <NavigationContainer>
+        <Tab.Navigator initialRouteName="Dashboard">
+          <Tab.Screen name="Dashboard" component={DashboardTab} options={{ title: 'Home' }} />
+          <Tab.Screen name="Preferences" component={PreferencesTab} options={{ title: 'Settings' }} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </PreferenceProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
